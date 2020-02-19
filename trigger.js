@@ -5,7 +5,7 @@ function errorHandler() {
     
 }
 
-module.exports =  ({from, body}) => {
+module.exports =  (client, {from, body}) => {
     if (body.match(process.env.REQUIRED_CODE)) {
         request(process.env.HTTP_TRIGGER, {
             method: 'POST',
@@ -16,6 +16,16 @@ module.exports =  ({from, body}) => {
             body: JSON.stringify({from, body})
         }, (error, response, result) => {
             console.log(error, response, result);
+
+            if (error)
+                return false;
+            else {
+                const snapshot = JSON.parse(result);
+
+                if (snapshot.reply)
+                    client.sendText(from, snapshot.message);
+            }
+            
         });
     }
 }

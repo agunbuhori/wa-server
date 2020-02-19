@@ -6,7 +6,7 @@ require('dotenv').config();
 function start(client) {
     client.onMessage(message => {
         if (process.env.MODE === 'prod')
-            trigger(message);
+            trigger(client, message);
         else
             client.sendText(message.from, "WA server is working :)");
     });
