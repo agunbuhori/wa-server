@@ -1,0 +1,15 @@
+{
+  "name": "tslwa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "agunbuhori",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "request": "^2.88.2",
+    "sulla-hotfix": "^1.7.24"
+  }
+}
